@@ -43,6 +43,7 @@ export const Header = memo(() => {
           <Box
             sx={{ flexGrow: 1, display: "flex", alignItems: "center", px: 0 }}
           >
+            <Box sx={{ color: "black", px: 2 }}>My Site</Box>
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <Button variant="text" color="info" size="small">
                 Features
