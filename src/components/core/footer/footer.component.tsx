@@ -6,7 +6,7 @@ export const Footer = memo(() => {
     <Box
       sx={{
         flexGrow: 1,
-        mt: 10,
+        my: 5,
       }}
     >
       <Typography
