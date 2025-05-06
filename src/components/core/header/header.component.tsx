@@ -6,11 +6,25 @@ import {
   Drawer,
   IconButton,
   MenuItem,
+  styled,
   Toolbar,
 } from "@mui/material";
 import { memo, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  flexShrink: 0,
+  borderRadius: 10,
+  backdropFilter: "blur(24px)",
+  border: "1px solid",
+  borderColor: theme.palette.divider,
+  boxShadow: theme.shadows[1],
+  padding: "0px 12px",
+}));
 
 export const Header = memo(() => {
   const [open, setOpen] = useState(false);
@@ -26,25 +40,16 @@ export const Header = memo(() => {
       sx={{
         boxShadow: 0,
         bgcolor: "transparent",
+        backgroundImage: "none",
         mt: 1,
       }}
     >
       <Container maxWidth="lg">
-        <Toolbar
-          variant="dense"
-          disableGutters
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            borderRadius: 2,
-            border: "1px solid",
-          }}
-        >
+        <StyledToolbar variant="dense" disableGutters>
           <Box
             sx={{ flexGrow: 1, display: "flex", alignItems: "center", px: 0 }}
           >
-            <Box sx={{ color: "black", px: 2 }}>My Site</Box>
+            <Box sx={{ px: 2, color: "text.primary" }}>My Site</Box>
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <Button variant="text" color="info" size="small">
                 Features
@@ -77,7 +82,7 @@ export const Header = memo(() => {
             </Box>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" }, gap: 1 }}>
-            <IconButton onClick={handleDrawer(true)}>
+            <IconButton sx={{ p: 0.5 }} onClick={handleDrawer(true)}>
               <MenuIcon />
             </IconButton>
             <Drawer anchor="top" open={open} onClose={handleDrawer(false)}>
@@ -88,7 +93,10 @@ export const Header = memo(() => {
                     justifyContent: "flex-end",
                   }}
                 >
-                  <IconButton onClick={handleDrawer(false)}>
+                  <IconButton
+                    sx={{ p: 0.5, mb: 1 }}
+                    onClick={handleDrawer(false)}
+                  >
                     <CloseRoundedIcon />
                   </IconButton>
                 </Box>
@@ -101,7 +109,7 @@ export const Header = memo(() => {
               </Box>
             </Drawer>
           </Box>
-        </Toolbar>
+        </StyledToolbar>
       </Container>
     </AppBar>
   );

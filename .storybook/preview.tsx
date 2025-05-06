@@ -1,32 +1,18 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
-import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
-import {
-  colorSchemes,
-  shadows,
-  shape,
-  typography,
-} from "../src/styles/theme-base.constant";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { appTheme } from "../src/styles";
 
 const withMuiTheme = (Story, context) => {
-  const colorScheme = context.globals.colorScheme || "light";
-
-  const theme = createTheme({
-    cssVariables: {
-      colorSchemeSelector: "data-mui-color-scheme",
-      cssVarPrefix: "template",
-    },
-    colorSchemes,
-    typography,
-    shadows,
-    shape,
-    palette: {
-      mode: colorScheme,
-    },
-  });
+  // ここで data-mui-color-scheme を即時に切り替える（useEffect 不要）
+  const isDark = context.globals.theme === "dark";
+  document.documentElement.setAttribute(
+    "data-mui-color-scheme",
+    isDark ? "dark" : "light"
+  );
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={appTheme}>
       <CssBaseline />
       <Story />
     </ThemeProvider>
@@ -43,20 +29,16 @@ const preview: Preview = {
       },
     },
   },
-  globals: {
-    colorScheme: "light",
-  },
+
+  // グローバルに mode の選択肢を定義
   globalTypes: {
-    colorScheme: {
-      name: "Color Scheme",
-      description: "Global color scheme for components",
+    theme: {
+      name: "Theme",
+      description: "Global theme mode",
       defaultValue: "light",
       toolbar: {
-        icon: "mirror",
-        items: [
-          { value: "light", title: "Light" },
-          { value: "dark", title: "Dark" },
-        ],
+        icon: "circlehollow",
+        items: ["light", "dark"],
       },
     },
   },

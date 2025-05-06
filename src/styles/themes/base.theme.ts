@@ -1,3 +1,16 @@
+/**
+ * ベーステーマ定義
+ *
+ * 以下の MUI のテーマ設定要素を拡張・定義：
+ * - shadows: デフォルトの影スタイルにカスタム影を追加（shadows[1] のみ置き換え）
+ * - brand, gray, green, orange, red: HSLベースのカラーパレット定義
+ * - colorSchemes: Light/Dark モードそれぞれのカラーパレット設定
+ * - typography: フォントサイズ、行間、太さなどのタイポグラフィ設定
+ * - shape: コンポーネントの角丸設定
+ * - 型拡張: Paper のバリアントに 'highlighted' を追加、Palette に baseShadow を追加
+ * - defaultTheme: MUIのデフォルトテーマからpxToRem等の補助関数を利用するために参照
+ */
+
 import { createTheme, alpha, Shadows } from "@mui/material/styles";
 
 /**
@@ -52,16 +65,16 @@ export const shadows = defaultTheme.shadows.map((shadow, index) =>
 
 /** ブランドカラー */
 export const brand = {
-  50: "hsl(210, 100%, 95%)",
-  100: "hsl(210, 100%, 92%)",
-  200: "hsl(210, 100%, 80%)",
-  300: "hsl(210, 100%, 65%)",
-  400: "hsl(210, 98%, 48%)",
-  500: "hsl(210, 98%, 42%)",
-  600: "hsl(210, 98%, 55%)",
-  700: "hsl(210, 100%, 35%)",
-  800: "hsl(210, 100%, 16%)",
-  900: "hsl(210, 100%, 21%)",
+  50: "hsl(220, 35%, 97%)",
+  100: "hsl(220, 30%, 94%)",
+  200: "hsl(220, 20%, 88%)",
+  300: "hsl(220, 20%, 80%)",
+  400: "hsl(220, 20%, 65%)",
+  500: "hsl(220, 20%, 42%)",
+  600: "hsl(220, 20%, 35%)",
+  700: "hsl(220, 20%, 25%)",
+  800: "hsl(220, 30%, 6%)",
+  900: "hsl(220, 35%, 3%)",
 };
 
 /** グレーカラー */
@@ -134,8 +147,8 @@ export const colorSchemes = {
       },
       info: {
         light: brand[100],
-        main: brand[300],
-        dark: brand[600],
+        main: brand[700],
+        dark: brand[900],
         contrastText: gray[50],
       },
       warning: {
@@ -183,10 +196,10 @@ export const colorSchemes = {
         dark: brand[700],
       },
       info: {
-        contrastText: brand[300],
-        light: brand[500],
-        main: brand[700],
-        dark: brand[900],
+        contrastText: brand[700],
+        light: brand[100],
+        main: brand[200],
+        dark: brand[300],
       },
       warning: {
         light: orange[400],

@@ -1,10 +1,15 @@
 import { createTheme } from "@mui/material/styles";
 import {
   colorSchemes,
-  typography,
+  dataDisplayTheme,
+  feedbackTheme,
+  inputsTheme,
+  navigationTheme,
   shadows,
   shape,
-} from "./theme-base.constant";
+  surfacesTheme,
+  typography,
+} from "./themes";
 
 /**
  * アプリ用カスタムテーマ
@@ -18,4 +23,11 @@ export const appTheme = createTheme({
   typography,
   shadows,
   shape,
+  components: {
+    ...dataDisplayTheme,
+    ...feedbackTheme,
+    ...inputsTheme,
+    ...navigationTheme,
+    ...surfacesTheme,
+  },
 });
