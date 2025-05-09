@@ -2,9 +2,9 @@ import React from "react";
 import type { Preview } from "@storybook/react";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { appTheme } from "../src/styles";
+import { MemoryRouter } from "react-router-dom";
 
-const withMuiTheme = (Story, context) => {
-  // ここで data-mui-color-scheme を即時に切り替える（useEffect 不要）
+const withProviders = (Story, context) => {
   const isDark = context.globals.theme === "dark";
   document.documentElement.setAttribute(
     "data-mui-color-scheme",
@@ -12,15 +12,17 @@ const withMuiTheme = (Story, context) => {
   );
 
   return (
-    <ThemeProvider theme={appTheme}>
-      <CssBaseline />
-      <Story />
-    </ThemeProvider>
+    <MemoryRouter>
+      <ThemeProvider theme={appTheme}>
+        <CssBaseline />
+        <Story />
+      </ThemeProvider>
+    </MemoryRouter>
   );
 };
 
 const preview: Preview = {
-  decorators: [withMuiTheme],
+  decorators: [withProviders],
   parameters: {
     controls: {
       matchers: {
@@ -29,8 +31,6 @@ const preview: Preview = {
       },
     },
   },
-
-  // グローバルに mode の選択肢を定義
   globalTypes: {
     theme: {
       name: "Theme",

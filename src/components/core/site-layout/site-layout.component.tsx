@@ -1,9 +1,7 @@
 import { memo } from "react";
 import { CssBaseline } from "@mui/material";
 import { SiteLayoutProps } from "./site-layout.interface";
-import { Header } from "../header";
-import { Footer } from "../footer";
-import { MainSidebar } from "../main-sidebar";
+import { Footer, Header, MainSidebar } from "@/components";
 
 export const SiteLayout = memo(({ main, sidebar }: SiteLayoutProps) => {
   return (
