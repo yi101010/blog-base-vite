@@ -1,8 +1,9 @@
 import { Box, Container, Toolbar } from "@mui/material";
 import { memo } from "react";
+import { Outlet } from "react-router-dom";
 import { MainSidebarProps } from "./main-sidebar.interface";
 
-export const MainSidebar = memo(({ main, sidebar }: MainSidebarProps) => {
+export const MainSidebar = memo(({ sidebar }: MainSidebarProps) => {
   return (
     <Container maxWidth="lg" sx={{ px: 0 }}>
       <Toolbar variant="dense" />
@@ -16,7 +17,7 @@ export const MainSidebar = memo(({ main, sidebar }: MainSidebarProps) => {
             width: { xs: "100%", md: "70%" },
           }}
         >
-          {main}
+          <Outlet />
         </Box>
         <Box
           sx={{
