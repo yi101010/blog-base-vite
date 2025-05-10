@@ -3,10 +3,10 @@ import { memo } from "react";
 import { Outlet } from "react-router-dom";
 import { MainSidebarProps } from "./main-sidebar.interface";
 
-export const MainSidebar = memo(({ sidebar }: MainSidebarProps) => {
+export const MainSidebar = memo(({ main, sidebar }: MainSidebarProps) => {
   return (
-    <Container maxWidth="lg" sx={{ px: 0 }}>
-      <Toolbar variant="dense" />
+    <Container maxWidth="lg" sx={{ mt: 1 }}>
+      <Toolbar />
       <Box
         display="flex"
         flexDirection={{ xs: "column", md: "row" }}
@@ -17,7 +17,7 @@ export const MainSidebar = memo(({ sidebar }: MainSidebarProps) => {
             width: { xs: "100%", md: "70%" },
           }}
         >
-          <Outlet />
+          {main || <Outlet />}
         </Box>
         <Box
           sx={{
