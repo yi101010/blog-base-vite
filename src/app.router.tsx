@@ -8,6 +8,7 @@ import {
 import { ROUTES } from "./constants";
 import {
   AboutPage,
+  ArchivePage,
   ContactPage,
   HomePage,
   NotFoundPage,
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path={ROUTES.POST} element={<PostPage />} />
       <Route path={ROUTES.TAG} element={<TagPage />} />
       <Route path={ROUTES.TAGS} element={<TagsPage />} />
+      <Route path={ROUTES.ARCHIVE} element={<ArchivePage />} />
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
       <Route path={ROUTES.CONTACT} element={<ContactPage />} />
       <Route path={ROUTES.STATS} element={<StatsPage />} />
