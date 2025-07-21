@@ -4,6 +4,7 @@ export const ROUTES = {
   TAGS: "/tags",
   TAG: "/tags/:tagId",
   ABOUT: "/about",
+  STATS: "/stats",
   CONTACT: "/contact",
   NOTFOUND: "/404",
 } as const;

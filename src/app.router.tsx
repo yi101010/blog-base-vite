@@ -12,6 +12,7 @@ import {
   HomePage,
   NotFoundPage,
   PostPage,
+  StatsPage,
   TagPage,
   TagsPage,
 } from "./pages";
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
       <Route path={ROUTES.TAGS} element={<TagsPage />} />
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
       <Route path={ROUTES.CONTACT} element={<ContactPage />} />
+      <Route path={ROUTES.STATS} element={<StatsPage />} />
       <Route path={ROUTES.NOTFOUND} element={<NotFoundPage />} />
       <Route path="*" element={<Navigate replace to={ROUTES.NOTFOUND} />} />
     </Route>

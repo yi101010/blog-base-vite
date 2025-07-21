@@ -3,5 +3,6 @@ export * from "./contact";
 export * from "./home";
 export * from "./not-found";
 export * from "./post";
+export * from "./stats";
 export * from "./tag";
 export * from "./tags";
