@@ -12,6 +12,7 @@ import {
   HomePage,
   NotFoundPage,
   PostPage,
+  TagPage,
   TagsPage,
 } from "./pages";
 import { SiteLayout } from "./components";
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
     <Route element={<SiteLayout />}>
       <Route path={ROUTES.HOME} element={<HomePage />} />
       <Route path={ROUTES.POST} element={<PostPage />} />
+      <Route path={ROUTES.TAG} element={<TagPage />} />
       <Route path={ROUTES.TAGS} element={<TagsPage />} />
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
       <Route path={ROUTES.CONTACT} element={<ContactPage />} />
