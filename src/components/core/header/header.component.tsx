@@ -10,8 +10,10 @@ import {
   Toolbar,
 } from "@mui/material";
 import { memo, useState } from "react";
+import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { HEADER_LINKS, MENU_LINKS } from "@/constants";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -49,36 +51,31 @@ export const Header = memo(() => {
           <Box
             sx={{ flexGrow: 1, display: "flex", alignItems: "center", px: 0 }}
           >
-            <Box sx={{ px: 2, color: "text.primary" }}>My Site</Box>
+            <Box
+              component={Link}
+              to="/"
+              sx={{
+                px: 2,
+                color: "text.primary",
+                textDecoration: "none",
+                fontWeight: "bold",
+              }}
+            >
+              My Site
+            </Box>
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <Button variant="text" color="info" size="small">
-                Features
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Testimonials
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Highlights
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Pricing
-              </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                sx={{ minWidth: 0 }}
-              >
-                FAQ
-              </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                sx={{ minWidth: 0 }}
-              >
-                Blog
-              </Button>
+              {HEADER_LINKS.map((link) => (
+                <Button
+                  key={link.path}
+                  component={Link}
+                  to={link.path}
+                  variant="text"
+                  color="info"
+                  size="small"
+                >
+                  {link.label}
+                </Button>
+              ))}
             </Box>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" }, gap: 1 }}>
@@ -100,12 +97,16 @@ export const Header = memo(() => {
                     <CloseRoundedIcon />
                   </IconButton>
                 </Box>
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
-                <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
+                {MENU_LINKS.map((link) => (
+                  <MenuItem
+                    key={link.path}
+                    component={Link}
+                    to={link.path}
+                    onClick={handleDrawer(false)}
+                  >
+                    {link.label}
+                  </MenuItem>
+                ))}
               </Box>
             </Drawer>
           </Box>
