@@ -6,7 +6,5 @@ import { NavLink } from "@/types";
  */
 export const HEADER_LINKS: NavLink[] = [
   { label: "Tags", path: "/tags" },
-  { label: "About", path: "/about" },
   { label: "Stats", path: "/stats" },
-  { label: "Contact", path: "/contact" },
 ];

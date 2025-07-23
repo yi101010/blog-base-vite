@@ -1,5 +1,7 @@
 import { memo } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import { FOOTER_LINKS } from "@/constants";
 
 export const Footer = memo(() => {
   return (
@@ -9,6 +11,20 @@ export const Footer = memo(() => {
         my: 5,
       }}
     >
+      <Box textAlign="center">
+        {FOOTER_LINKS.map((link) => (
+          <Button
+            key={link.path}
+            component={Link}
+            to={link.path}
+            variant="text"
+            color="info"
+            size="small"
+          >
+            {link.label}
+          </Button>
+        ))}
+      </Box>
       <Typography
         align="center"
         sx={{
