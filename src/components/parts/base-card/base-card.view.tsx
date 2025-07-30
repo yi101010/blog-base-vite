@@ -1,6 +1,7 @@
 import { CardProps } from "@mui/material";
 import { ReactNode } from "react";
 import { StyledCard } from "./base-card.styled";
+import { LinkProps } from "react-router-dom";
 
 /**
  * アプリ全体で再利用可能なベースカードコンポーネント。
@@ -19,7 +20,9 @@ import { StyledCard } from "./base-card.styled";
  *   <Typography variant="h6">Title</Typography>
  * </BaseCard>
  */
-export const BaseCard = (props: CardProps & { children: ReactNode }) => {
+export const BaseCard = (
+  props: CardProps & LinkProps & { children: ReactNode }
+) => {
   const { children, ...cardProps } = props;
 
   return <StyledCard {...cardProps}>{children}</StyledCard>;

@@ -1,2 +1,3 @@
 export * from "./links";
-export * from "./routes.constant";
+export * from "./routes";
+export * from "./assets.constant";
