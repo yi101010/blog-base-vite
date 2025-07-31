@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { CardListItem } from "./card-list-item.view";
-import { CardListItemProps } from ".";
+import { CardListItem, CardListItemProps } from "@/components";
 
 export default {
   title: "Components/CardListItem",
