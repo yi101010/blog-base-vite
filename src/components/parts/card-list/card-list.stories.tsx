@@ -8,7 +8,9 @@ export default {
 
 export const Basic = () => {
   const [favorites, setFavorites] = useState<Record<string, boolean>>({});
+  const [page, setPage] = useState(1);
 
+  /** お気に入り切り替え */
   const toggleFavorite = (id: string) => {
     setFavorites((prev) => ({
       ...prev,
@@ -16,6 +18,7 @@ export const Basic = () => {
     }));
   };
 
+  /** ダミー記事データ */
   const items: CardListItemProps[] = [
     {
       id: "1",
@@ -49,5 +52,12 @@ export const Basic = () => {
     },
   ];
 
-  return <CardList items={items} />;
+  return (
+    <CardList
+      items={items}
+      page={page}
+      count={10}
+      onChange={(_, value) => setPage(value)}
+    />
+  );
 };
