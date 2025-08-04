@@ -1,4 +1,9 @@
-import { setupServer } from "msw/node";
-import { handlers } from "./handlers";
+/**
+ * @file server.ts
+ * @description MSWサーバーインスタンス
+ */
 
-export const server = setupServer(...handlers);
+import { setupServer } from "msw/node";
+import { articlesHandlers } from "./handlers/articles.handler";
+
+export const server = setupServer(...articlesHandlers);

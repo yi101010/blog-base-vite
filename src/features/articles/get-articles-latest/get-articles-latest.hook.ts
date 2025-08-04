@@ -9,6 +9,5 @@ export const useArticlesLatest = () => {
   return useQuery<Articles>({
     queryKey: ["ARTICLES_LATEST"],
     queryFn: getArticlesLatest,
-    staleTime: 1000 * 60 * 5, // 5分
   });
 };
