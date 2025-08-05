@@ -15,6 +15,7 @@ export const MainSidebar = memo(({ main, sidebar }: MainSidebarProps) => {
         <Box
           sx={{
             width: { xs: "100%", md: "70%" },
+            pr: { xs: 0, md: 3 },
           }}
         >
           {main || <Outlet />}
