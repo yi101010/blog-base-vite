@@ -23,6 +23,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<SiteLayout />}>
       <Route path={ROUTES.HOME} element={<HomePage />} />
+      <Route path={ROUTES.HOME_PAGE} element={<HomePage />} />
       <Route path={ROUTES.POST} element={<PostPage />} />
       <Route path={ROUTES.TAG} element={<TagPage />} />
       <Route path={ROUTES.TAGS} element={<TagsPage />} />

@@ -9,7 +9,7 @@ export const ArticleSchema = z.object({
   category: z.string().optional(),
   publishedAt: z.string(),
   imgPath: z.string().optional(),
-  commentCount: z.string().optional(),
+  commentCount: z.number().optional(),
 });
 
 /**

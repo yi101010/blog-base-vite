@@ -1,5 +1,6 @@
 export const ROUTES = {
   HOME: "/",
+  HOME_PAGE: "/page/:page",
   POST: "/post/:postId",
   TAGS: "/tags",
   TAG: "/tags/:tagId",

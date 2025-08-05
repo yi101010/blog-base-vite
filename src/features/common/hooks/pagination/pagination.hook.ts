@@ -22,7 +22,9 @@ export const usePagination = (basePath: string) => {
     if (value === 1) {
       navigate(basePath); // 1ページ目は /page/ なし
     } else {
-      navigate(`${basePath}/page/${value}/`);
+      // 先頭スラッシュを必ず付与して絶対パスにする
+      const prefix = basePath === "/" ? "" : basePath;
+      navigate(`${prefix}/page/${value}/`);
     }
   };
 

@@ -1,6 +1,6 @@
 import { memo } from "react";
-import { Home } from "./components";
+import { HomeContainer } from "./home.container";
 
 export const HomePage = memo(() => {
-  return <Home />;
+  return <HomeContainer />;
 });
