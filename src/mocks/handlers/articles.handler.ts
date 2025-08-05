@@ -4,9 +4,10 @@
  */
 
 import { rest } from "msw";
+import { API_PATHS } from "@/constants";
 
 export const articlesHandlers = [
-  rest.get("/data/articles/latest.json", (_req, res, ctx) => {
+  rest.get(API_PATHS.ARTICLES_LATEST, (_req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json([

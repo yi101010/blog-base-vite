@@ -5,7 +5,7 @@
 
 import { renderHook, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useArticlesLatest } from "./get-articles-latest.hook";
+import { useArticlesLatest } from ".";
 
 describe("useArticlesLatest hook", () => {
   /**

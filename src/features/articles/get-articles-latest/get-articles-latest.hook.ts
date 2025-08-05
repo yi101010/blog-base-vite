@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Articles, getArticlesLatest } from ".";
+import { QUERY_KEYS } from "@/constants";
 
 /**
  * 最新記事一覧取得フック
@@ -7,7 +8,7 @@ import { Articles, getArticlesLatest } from ".";
  */
 export const useArticlesLatest = () => {
   return useQuery<Articles>({
-    queryKey: ["ARTICLES_LATEST"],
+    queryKey: QUERY_KEYS.ARTICLES_LATEST,
     queryFn: getArticlesLatest,
   });
 };
