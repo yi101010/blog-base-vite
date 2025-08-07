@@ -1,7 +1,8 @@
 import { memo } from "react";
 import { Home } from "./home.view";
 import { useArticlesLatest, useFavorites, usePagination } from "@/features";
-import { PAGINATION, ROUTES } from "@/constants";
+import { PAGINATION, ROUTES, ROUTES_BASE } from "@/constants";
+import { useFilterChips } from "@/components";
 
 export const HomeContainer = memo(() => {
   const { page, onChange } = usePagination(ROUTES.HOME);
@@ -25,6 +26,10 @@ export const HomeContainer = memo(() => {
     onClickFavorite: () => toggleFavorite(a.id),
   }));
 
+  const { selected, onChange: onChangeSelected } = useFilterChips(
+    ROUTES_BASE.CATEGORY
+  );
+
   return (
     <Home
       articles={mappedArticles}
@@ -33,6 +38,8 @@ export const HomeContainer = memo(() => {
       page={page}
       count={pageCount}
       onChangePage={onChange}
+      selected={selected}
+      onChangeSelected={onChangeSelected}
     />
   );
 });

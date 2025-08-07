@@ -1,4 +1,3 @@
-import React from "react";
 import type { Preview } from "@storybook/react";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { appTheme } from "../src/styles";

@@ -5,6 +5,7 @@ export const ROUTES = {
   TAGS: "/tags",
   TAG: "/tags/:tagId",
   ARCHIVE: "/archive/:year",
+  CATEGORY: "/category/:category",
   ABOUT: "/about",
   STATS: "/stats",
   CONTACT: "/contact",
