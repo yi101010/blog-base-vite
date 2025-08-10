@@ -1,29 +1,34 @@
 import { Box, Chip } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, Link as RouterLink } from "react-router-dom";
 import { FilterChipsProps } from "@/components";
 
 /**
- * フィルタチップ群を表示し、選択時にルーティングする UI コンポーネント
+ * カテゴリやタブの切り替えに使用するフィルタチップ群コンポーネント。
+ * 現在のURLパスに応じてアクティブ状態を自動判定し、チップの見た目を切り替える。
  *
  * @example
+ * ```tsx
  * <FilterChips
- *   options={[{ label: "All", value: "all" }, { label: "Tech", value: "tech" }]}
- *   selected={"all"}
- *   onChange={(val) => console.log(val)}
- *   basePath="category"
+ *   items={[
+ *     { label: "All",    path: "/" },
+ *     { label: "Tech",   path: "/category/tech" },
+ *     { label: "Design", path: "/category/design" },
+ *   ]}
  * />
+ * ```
+ * - 現在のパスが各 `path` と前方一致した場合、そのチップがアクティブ表示される。
+ * - ページングURL（例: `/category/tech/page/2` や `/page/1`）にも対応。
  */
-export const FilterChips = <T extends string | number>({
-  options,
-  selected,
-  onChange,
-  basePath,
-}: FilterChipsProps<T>) => {
-  const navigate = useNavigate();
+export const FilterChips = ({ items }: FilterChipsProps) => {
+  const { pathname } = useLocation();
 
-  const handleClick = (value: T) => {
-    onChange?.(value);
-    navigate(`/${basePath}/${value}`);
+  const isActive = (path: string) => {
+    // ルート("/")だけは "/" または "/page/..." でアクティブ扱い
+    if (path === "/") {
+      return pathname === "/" || pathname.startsWith("/page/");
+    }
+    // その他は前方一致で判定（ページング含む）
+    return pathname === path || pathname.startsWith(path + "/");
   };
 
   return (
@@ -46,21 +51,21 @@ export const FilterChips = <T extends string | number>({
           overflow: "auto",
         }}
       >
-        {options.map((option) => {
-          const isSelected = option.value === selected;
-
+        {items.map(({ label, path }) => {
+          const active = isActive(path);
           return (
             <Chip
-              key={option.value}
-              onClick={() => handleClick(option.value)}
-              label={option.label}
+              key={path}
+              component={RouterLink}
+              to={path}
+              clickable
+              label={label}
+              color={active ? "primary" : "default"}
+              variant={active ? "filled" : "outlined"}
               sx={
-                isSelected
-                  ? {}
-                  : {
-                      backgroundColor: "transparent",
-                      border: "none",
-                    }
+                !active
+                  ? { backgroundColor: "transparent", border: "none" }
+                  : {}
               }
             />
           );

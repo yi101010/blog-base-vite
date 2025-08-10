@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { FilterChips } from "./filter-chips.view";
-import type { FilterOption } from "./filter-chips.type";
+import { NavLink } from "@/types";
+import { FilterChips } from "@/components";
 
 export default {
   title: "Components/FilterChips",
@@ -8,25 +7,15 @@ export default {
 };
 
 /**
- * カテゴリ選択の基本的な使用例
+ * 基本（ルート = All がアクティブ）
  */
 export const Basic = () => {
-  const options: FilterOption[] = [
-    { label: "All", value: "all" },
-    { label: "Company", value: "company" },
-    { label: "Product", value: "product" },
-    { label: "Design", value: "design" },
-    { label: "Engineering", value: "engineering" },
+  const items: NavLink[] = [
+    { label: "All", path: "/" },
+    { label: "Company", path: "/category/company" },
+    { label: "Product", path: "/category/product" },
+    { label: "Design", path: "/category/design" },
+    { label: "Engineering", path: "/category/engineering" },
   ];
-
-  const [selected, setSelected] = useState("all");
-
-  return (
-    <FilterChips
-      options={options}
-      selected={selected}
-      onChange={setSelected}
-      basePath="category"
-    />
-  );
+  return <FilterChips items={items} />;
 };
