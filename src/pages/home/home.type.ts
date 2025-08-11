@@ -7,6 +7,4 @@ export type HomeProps = {
   page: number;
   count: number;
   onChangePage: (event: React.ChangeEvent<unknown>, value: number) => void;
-  selected: string;
-  onChangeSelected: (value: string) => void;
 };

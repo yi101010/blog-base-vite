@@ -1,6 +1,7 @@
 import { Box, Chip } from "@mui/material";
 import { useLocation, Link as RouterLink } from "react-router-dom";
 import { FilterChipsProps } from "@/components";
+import { useBreakpoint } from "@/features";
 
 /**
  * カテゴリやタブの切り替えに使用するフィルタチップ群コンポーネント。
@@ -21,6 +22,7 @@ import { FilterChipsProps } from "@/components";
  */
 export const FilterChips = ({ items }: FilterChipsProps) => {
   const { pathname } = useLocation();
+  const { isSmallDown } = useBreakpoint();
 
   const isActive = (path: string) => {
     // ルート("/")だけは "/" または "/page/..." でアクティブ扱い
@@ -47,8 +49,9 @@ export const FilterChips = ({ items }: FilterChipsProps) => {
         sx={{
           display: "inline-flex",
           flexDirection: "row",
-          gap: 3,
+          gap: { xs: 1, sm: 3 },
           overflow: "auto",
+          mb: { xs: 0.5, sm: 1 },
         }}
       >
         {items.map(({ label, path }) => {
@@ -62,11 +65,8 @@ export const FilterChips = ({ items }: FilterChipsProps) => {
               label={label}
               color={active ? "primary" : "default"}
               variant={active ? "filled" : "outlined"}
-              sx={
-                !active
-                  ? { backgroundColor: "transparent", border: "none" }
-                  : {}
-              }
+              size={isSmallDown ? "small" : "medium"}
+              sx={{ p: 1 }}
             />
           );
         })}

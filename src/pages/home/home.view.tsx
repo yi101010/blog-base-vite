@@ -2,19 +2,10 @@ import { memo } from "react";
 import { Typography } from "@mui/material";
 import { HomeProps } from "./home.type";
 import { CardList, FilterChips } from "@/components";
-import { CATEGORY_OPTIONS, ROUTES_BASE } from "@/constants";
+import { CATEGORY_LINKS } from "@/constants";
 
 export const Home = memo((props: HomeProps) => {
-  const {
-    articles,
-    isLoading,
-    isError,
-    page,
-    count,
-    onChangePage,
-    selected,
-    onChangeSelected,
-  } = props;
+  const { articles, isLoading, isError, page, count, onChangePage } = props;
 
   if (isLoading) {
     return <Typography>Loading...</Typography>;
@@ -30,12 +21,7 @@ export const Home = memo((props: HomeProps) => {
         My Site
       </Typography>
 
-      <FilterChips
-        options={CATEGORY_OPTIONS}
-        selected={selected}
-        onChange={onChangeSelected}
-        basePath={ROUTES_BASE.CATEGORY}
-      />
+      <FilterChips items={CATEGORY_LINKS} />
       <CardList
         items={articles}
         page={page}
