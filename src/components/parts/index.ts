@@ -4,3 +4,4 @@ export * from "./card-list";
 export * from "./card-list-item";
 export * from "./filter-chips";
 export * from "./page-title";
+export * from "./sub-title";

@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Typography } from "@mui/material";
 import { HomeProps } from "./home.type";
-import { CardList, FilterChips } from "@/components";
+import { CardList, FilterChips, SubTitle } from "@/components";
 import { CATEGORY_LINKS } from "@/constants";
 
 export const Home = memo((props: HomeProps) => {
@@ -20,6 +20,9 @@ export const Home = memo((props: HomeProps) => {
       <Typography variant="h1" sx={{ fontSize: 26 }} gutterBottom>
         My Site
       </Typography>
+
+      <SubTitle>おすすめ記事</SubTitle>
+      <SubTitle>人気記事ランキング</SubTitle>
 
       <FilterChips items={CATEGORY_LINKS} />
       <CardList
